@@ -16,6 +16,9 @@ import {AvatarModule} from 'primeng/avatar';
 import {TooltipModule} from 'primeng/tooltip';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import {MegaMenuModule} from 'primeng/megamenu';
+import {TableModule} from "primeng/table";
+import {RatingModule} from "primeng/rating";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,9 +40,13 @@ import {MegaMenuModule} from 'primeng/megamenu';
     DropdownModule,
     AvatarModule,
     TooltipModule,
-    MegaMenuModule
+    MegaMenuModule,
+    TableModule,
+    RatingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

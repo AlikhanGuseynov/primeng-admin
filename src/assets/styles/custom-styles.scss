@@ -101,6 +101,9 @@ input::-webkit-inner-spin-button {
 
 .page {
   padding: 10px 25px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .page-inner {
@@ -128,5 +131,24 @@ input::-webkit-inner-spin-button {
 
   &:hover {
     background: #3570d9;
+  }
+}
+
+
+.card {
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px;
+}
+
+.btn-black {
+  background: #161616;
+  padding: 8px 16px;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 4px;
+
+  &:hover {
+    opacity: .95;
   }
 }

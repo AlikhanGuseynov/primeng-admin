@@ -65,3 +65,48 @@
 .yellow {
   background: linear-gradient(90deg, #FFB340 0%, #FFA740 100%);
 }
+
+.invent-friends {
+  margin: 24px 0;
+}
+
+.invent-friends-text {
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.product-list {
+  margin: 24px 0;
+}
+
+.product-badge {
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+
+  &.status-instock {
+    background: #c8e6c9;
+    color: #256029;
+  }
+
+  &.status-lowstock {
+    background: #feedaf;
+    color: #8a5340;
+  }
+
+  &.status-outofstock {
+    background: #ffcdd2;
+    color: #c63737;
+  }
+}
+
+.card-container-title {
+  font-size: 30px;
+  color: #424224;
+  font-weight: 600;
+  margin-bottom: 10px;
+}

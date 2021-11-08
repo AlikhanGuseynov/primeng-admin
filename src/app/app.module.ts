@@ -19,6 +19,8 @@ import {MegaMenuModule} from 'primeng/megamenu';
 import {TableModule} from "primeng/table";
 import {RatingModule} from "primeng/rating";
 import {HttpClientModule} from "@angular/common/http";
+import { RequestListComponent } from './request-list/request-list.component';
+import {TagModule} from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     DashboardComponent,
     HeaderComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    RequestListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {HttpClientModule} from "@angular/common/http";
     MegaMenuModule,
     TableModule,
     RatingModule,
-    HttpClientModule
+    HttpClientModule,
+    TagModule
   ],
   providers: [
   ],

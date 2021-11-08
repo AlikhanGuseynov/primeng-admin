@@ -21,6 +21,10 @@ import {RatingModule} from "primeng/rating";
 import {HttpClientModule} from "@angular/common/http";
 import { RequestListComponent } from './request-list/request-list.component';
 import {TagModule} from "primeng/tag";
+import { SettingsComponent } from './settings/settings.component';
+import {AccordionModule} from 'primeng/accordion';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {FieldsetModule} from "primeng/fieldset";
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import {TagModule} from "primeng/tag";
     DashboardComponent,
     HeaderComponent,
     SafeHtmlPipe,
-    RequestListComponent
+    RequestListComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ import {TagModule} from "primeng/tag";
     TableModule,
     RatingModule,
     HttpClientModule,
-    TagModule
+    TagModule,
+    AccordionModule,
+    InputSwitchModule,
+    FieldsetModule
   ],
   providers: [
   ],

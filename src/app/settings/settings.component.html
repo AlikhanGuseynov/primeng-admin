@@ -1,0 +1,81 @@
+<div class="page">
+  <h2 style="margin-bottom: 10px;">Example 1</h2>
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Some header 1" [selected]="true">
+      <div class="list">
+        <div class="list-item">
+          <p>Mobile number</p>
+          <p-inputSwitch [(ngModel)]="check1"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Email</p>
+          <p-inputSwitch [(ngModel)]="check2"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Browser</p>
+          <p-inputSwitch [(ngModel)]="check3"></p-inputSwitch>
+        </div>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Some header 2">
+      <div class="list">
+        <div class="list-item">
+          <p>Mobile number</p>
+          <p-inputSwitch [(ngModel)]="check4"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Email</p>
+          <p-inputSwitch [(ngModel)]="check5"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Browser</p>
+          <p-inputSwitch [(ngModel)]="check6"></p-inputSwitch>
+        </div>
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+
+  <br>
+  <br>
+
+  <h2 style="margin-bottom: 10px;">Example 2</h2>
+  <p-fieldset [toggleable]="true" [collapsed]="check3">
+    <ng-template pTemplate="header">Some header 3</ng-template>
+    <ng-template pTemplate="content">
+      <div class="list">
+        <div class="list-item">
+          <p>Mobile number</p>
+          <p-inputSwitch [(ngModel)]="check1"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Email</p>
+          <p-inputSwitch [(ngModel)]="check2"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Browser</p>
+          <p-inputSwitch [(ngModel)]="check2"></p-inputSwitch>
+        </div>
+      </div>
+    </ng-template>
+  </p-fieldset>
+  <p-fieldset [toggleable]="true">
+    <ng-template pTemplate="header">Some header 4</ng-template>
+    <ng-template pTemplate="content">
+      <div class="list">
+        <div class="list-item">
+          <p>Mobile number</p>
+          <p-inputSwitch [(ngModel)]="check4"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Email</p>
+          <p-inputSwitch [(ngModel)]="check5"></p-inputSwitch>
+        </div>
+        <div class="list-item">
+          <p>Browser</p>
+          <p-inputSwitch [(ngModel)]="check6"></p-inputSwitch>
+        </div>
+      </div>
+    </ng-template>
+  </p-fieldset>
+</div>

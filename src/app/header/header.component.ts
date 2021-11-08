@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
             {
               items: [
                 {label: 'Company profile', routerLink: '/dashboard'},
-                {label: 'Settings'},
+                {label: 'Settings', routerLink: '/settings'},
                 {label: 'Logout'},
               ]
             }

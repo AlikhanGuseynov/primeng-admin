@@ -1,0 +1,23 @@
+.header {
+  padding: 5px 24px;
+  background: #fff;
+}
+
+.logo {
+  width: 20px;
+}
+
+.avatar-container {
+  cursor: pointer;
+  position: relative;
+  top: 3px;
+}
+
+.mega-menu {
+  background: transparent;
+}
+
+li.p-menuitem-text {
+  display: none !important;
+  background: red !important;
+}

@@ -1,0 +1,40 @@
+<header class="header flex justify-content-between align-items-center">
+  <div routerLink="/dashboard" style="cursor: pointer">
+    <img class="logo" src="https://www.primefaces.org/freya-ng/assets/layout/images/logo-freya-single.svg" alt="">
+  </div>
+
+  <div class="header-right flex align-items-center">
+
+    <button pButton type="button" label="Create request" class="p-button p-button-secondary">
+
+    </button>
+
+    <p-dropdown
+      [options]="cities"
+      [(ngModel)]="selectedCity"
+      (onChange)="asd($event)"
+      [style]="{border: 'none', outline: 'none', margin: '0 15px'}"
+      optionLabel="name"
+    ></p-dropdown>
+
+    <div class="avatar-container"
+         [pTooltip]="'Enter your username'"
+         tooltipPosition="bottom"
+    >
+      <p-avatar
+        image="https://hesab.az/api/pg/public/profile/photo/A12531886826F3320D4381ECC021A287.png"
+        styleClass="p-mr-2"
+        shape="circle"
+      ></p-avatar>
+    </div>
+
+    <p-megaMenu
+      [styleClass]="'mega-menu'"
+      [style]="{background: 'transparent', border: 'none'}"
+      [model]="menuItems"
+      (change)="asd($event)"
+    ></p-megaMenu>
+
+  </div>
+
+</header>

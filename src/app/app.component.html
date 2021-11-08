@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="isLogin">
+  <app-header></app-header>
+</ng-container>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

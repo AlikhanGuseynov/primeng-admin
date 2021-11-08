@@ -9,12 +9,14 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

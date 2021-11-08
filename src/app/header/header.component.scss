@@ -26,3 +26,14 @@ li.p-menuitem-text {
   display: none !important;
   background: red !important;
 }
+
+.p-megamenu-submenu-header {
+  display: none;
+}
+
+:host ::ng-deep {
+  .p-megamenu-submenu-header {
+    display: none;
+  }
+}
+

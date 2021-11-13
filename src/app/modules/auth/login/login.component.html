@@ -1,0 +1,24 @@
+<div class="login-page">
+  <div class="logo-container">
+    <img class="logo" src="https://www.primefaces.org/freya-ng/assets/layout/images/logo-freya-single.svg" alt="">
+  </div>
+  <form #f="ngForm" class="form p-d-flex p-flex-column" novalidate>
+
+    <p class="error-label-general" *ngIf="regErrorMessage">{{regErrorMessage}}</p>
+    <input id="email" placeholder="Email" class="p-inputtext p-component p-element"
+           [pattern]="loginModel.patterns.username" [(ngModel)]="loginModel.username" #signupUsername="ngModel"
+           name="signupUsername" required
+           (keyup)="clearError()">
+    <input id="password" placeholder="Password" class="p-inputtext p-component p-element"
+           [(ngModel)]="loginModel.password" required
+           name="signupPassword" #password (keyup.enter)="login()">
+    <button label="Large" (click)="login()"
+            [disabled]="!f.valid || loginModel.username === '' || loginModel.password === ''" type="button"
+            class="p-element p-ripple p-button p-component">
+      <span class="p-button-label">LOGIN</span>
+      <span class="p-ink"></span>
+    </button>
+  </form>
+
+
+</div>

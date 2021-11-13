@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PRODUCT_LIST} from "../mock/product.mock";
+import {PRODUCT_LIST} from "../../../mock/product.mock";
 
 export interface Product {
   id?:string;

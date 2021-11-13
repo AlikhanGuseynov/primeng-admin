@@ -1,7 +1,7 @@
-<div style="height: 66px;" *ngIf="isLogin">
-  <app-header></app-header>
+<app-index-layout  [signed]="isLogin"></app-index-layout>
+<router-outlet></router-outlet>
+<app-footer-layout  [signed]="isLogin"></app-footer-layout>
+<div class="loader" style="display: none">
+  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 
-<div>
-  <router-outlet></router-outlet>
-</div>

@@ -9,6 +9,7 @@ import {UtilService} from '../../../services/util.service';
   styleUrls: ['./left-sidebar.component.scss'],
 })
 export class LeftSidebarComponent implements OnInit {
+  display = false;
 
 
   constructor(private util: UtilService) {

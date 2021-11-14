@@ -22,7 +22,10 @@ import {TagModule} from "primeng/tag";
 import {AccordionModule} from "primeng/accordion";
 import {InputSwitchModule} from "primeng/inputswitch";
 import {FieldsetModule} from "primeng/fieldset";
+import {SidebarModule} from "primeng/sidebar";
+
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
+
 @NgModule({
   declarations: [
     DocumentclickDirective,
@@ -49,6 +52,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpClientModule,       // (Required) For share counts
     HttpClientJsonpModule,  // (Optional) Add if you want tumblr share counts
     NgxMaskModule.forRoot(options),
+    SidebarModule
   ],
   exports: [
     TranslateModule,
@@ -74,6 +78,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     RouterModule,
     HttpClientModule,       // (Required) For share counts
     HttpClientJsonpModule,  // (Optional) Add if you want tumblr share counts
+    SidebarModule
   ],
   providers: [RestService],
 })

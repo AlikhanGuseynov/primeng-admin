@@ -12,12 +12,21 @@
     <input id="password" placeholder="Password" class="p-inputtext p-component p-element"
            [(ngModel)]="loginModel.password" required
            name="signupPassword" #password (keyup.enter)="login()">
+    <!--    <button label="Large" (click)="login()"-->
+    <!--            [disabled]="!f.valid || loginModel.username === '' || loginModel.password === ''" -->
+    <!--            type="button"-->
+    <!--            class="p-element p-ripple p-button p-component">-->
+    <!--      <span class="p-button-label">LOGIN</span>-->
+    <!--      <span class="p-ink"></span>-->
+    <!--    </button>-->
     <button label="Large" (click)="login()"
-            [disabled]="!f.valid || loginModel.username === '' || loginModel.password === ''" type="button"
+            type="button"
             class="p-element p-ripple p-button p-component">
       <span class="p-button-label">LOGIN</span>
       <span class="p-ink"></span>
     </button>
+
+    <p class="have-account">Don’t you have an account, <a routerLink="/auth/register">sign up</a></p>
   </form>
 
 

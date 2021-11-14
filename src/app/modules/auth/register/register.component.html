@@ -1,1 +1,25 @@
-<p>register works!</p>
+<div class="login-page">
+  <div class="logo-container">
+    <img class="logo" src="https://www.primefaces.org/freya-ng/assets/layout/images/logo-freya-single.svg" alt="">
+  </div>
+  <form #f="ngForm" class="form p-d-flex p-flex-column" novalidate>
+
+    <input id="email" placeholder="Email" class="p-inputtext p-component p-element"
+           [pattern]="signupModel.patterns.username" [(ngModel)]="signupModel.username" #signupUsername="ngModel"
+           name="signupUsername" required
+           (keyup)="clearError()">
+    <input id="password" placeholder="Password" class="p-inputtext p-component p-element"
+           [(ngModel)]="signupModel.password" required
+           name="signupPassword" #password>
+    <input id="repeat-password" placeholder="Repeat password" class="p-inputtext p-component p-element"
+           [(ngModel)]="repeatPassword" required
+           name="signupPassword" #repeatPasswordModel>
+    <button label="Large" (click)="signup()"
+            [disabled]="!(f.valid && repeatPassword === signupModel.password) "
+            type="button"
+            class="p-element p-ripple p-button p-component">
+      <span class="p-button-label">SIGNUP</span>
+      <span class="p-ink"></span>
+    </button>
+  </form>
+</div>

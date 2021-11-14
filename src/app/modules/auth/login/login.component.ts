@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {RestService} from "../../../services/rest.service";
 import {Login} from "../../../models/login";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,13 @@ export class LoginComponent implements OnInit {
   // @ViewChild('captchaRef', {static: false}) captchaRef: any;
   returnUrl = '';
 
-  constructor(private rest: RestService, private util: UtilService, private http: HttpClient, private route: ActivatedRoute) {
+  constructor(
+    private rest: RestService,
+    private util: UtilService,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {
   }
 
   ngOnInit() {
@@ -36,6 +43,11 @@ export class LoginComponent implements OnInit {
     // if (localStorage.getItem('accessToken')) {
     //   window.location.href = window.location.origin + '/#' + (this.returnUrl ? this.returnUrl : '/dashboard');
     // }
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    this.authService.setLoginStatus(false);
   }
 
   checkUsername() {
@@ -46,7 +58,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.goTo('dashboard')
+    this.goTo('dashboard');
+    this.authService.setLoginStatus(true);
     // this.captchaRef.execute();
   }
 

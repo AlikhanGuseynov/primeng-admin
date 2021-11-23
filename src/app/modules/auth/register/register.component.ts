@@ -16,6 +16,10 @@ export class RegisterComponent implements OnInit {
   signupModel: Register = new Register();
   confirmPassword = '';
   regErrorMessage = '';
+  loginType = {
+    email: 'EMAIL',
+    mobile: 'MOBILE'
+  }
 
   constructor(private restService: RestService,
               private utilService: UtilService) {
@@ -29,6 +33,8 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
+    this.signupModel.usernameType = this.signupModel.patterns.username.test(this.signupModel.username)
+      ? this.loginType.email : this.loginType.mobile;
     this.signupModel.patterns = undefined;
     this.restService.register(this.signupModel).pipe(
       catchError((err) => {
@@ -40,7 +46,7 @@ export class RegisterComponent implements OnInit {
       })
     ).subscribe(
       (result: any) => {
-        this.utilService.goTo('auth/login');
+        this.utilService.goTo('dashboard');
       });
   }
 }

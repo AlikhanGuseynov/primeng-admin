@@ -7,15 +7,17 @@
     <input type="text" class="p-inputtext p-component p-element" id="user-username" [(ngModel)]="signupModel.username"
            [pattern]="signupModel.patterns.username" #signupUsername="ngModel" required
            name="signupUsername" (keyup)="clearError()" [placeholder]="'REGISTER.username' | translate">
-
-    <p class="danger own-danger error" [ngStyle]="{'display': signupUsername.errors?.pattern ? 'block' : 'none'}"
+    <input type="text" class="p-inputtext p-component p-element" id="user-mail" [(ngModel)]="signupModel.email"
+           [pattern]="signupModel.patterns.username" #signupEmail="ngModel" required
+           name="signupEmail" (keyup)="clearError()" [placeholder]="'REGISTER.email' | translate">
+    <p class="danger own-danger error" [ngStyle]="{'display': signupEmail.errors?.pattern ? 'block' : 'none'}"
        [translate]="'HOME.error_username'">Username incorrect</p>
-    <input type="text" class="p-inputtext p-component p-element" id="user-name" [(ngModel)]="signupModel.name"
+    <input type="text" class="p-inputtext p-component p-element" id="user-name" [(ngModel)]="signupModel.firstname"
            [pattern]="signupModel.patterns.name" #signupName="ngModel" required
            name="signupName" (keyup)="clearError()" [placeholder]="'REGISTER.name' | translate">
     <p class="danger own-danger error" [ngStyle]="{'display': signupName.errors?.pattern ? 'block' : 'none'}"
        [translate]="'HOME.error_name'">Username incorrect</p>
-    <input type="text" class="p-inputtext p-component p-element" id="user-surname" [(ngModel)]="signupModel.surname"
+    <input type="text" class="p-inputtext p-component p-element" id="user-surname" [(ngModel)]="signupModel.lastname"
            [pattern]="signupModel.patterns.surname" #signupSurname="ngModel" required
            name="signupSurname" (keyup)="clearError()" [placeholder]="'REGISTER.surname' | translate">
     <p class="danger own-danger error" [ngStyle]="{'display': signupSurname.errors?.pattern ? 'block' : 'none'}"
@@ -43,10 +45,13 @@
     <!--    <div class="recaptcha" style="margin-top: 10px;margin-bottom: 10px;">-->
     <!--      <re-captcha #captchaRef (resolved)="resolved($event)"></re-captcha>-->
     <!--    </div>-->
-    <button type="submit" (click)="signup()"
+    <button label="Large" (click)="signup()"
             [disabled]="signupPassword.errors?.pattern || signupModel.password !== confirmPassword"
-            class="btn btn-outline-primary btn-block" [translate]="'REGISTER.register'"><i
-      class="feather icon-user"></i> Register
+            type="button"
+            class="p-element p-ripple p-button p-component">
+      <span class="p-button-label">Register</span>
+<!--      <span class="p-button-label" [translate]="'REGISTER.register'">Register</span>-->
+      <span class="p-ink"></span>
     </button>
   </form>
 </div>

@@ -1,10 +1,11 @@
 export class Register {
   username: string;
-  name: string;
-  surname: string;
+  email: string;
+  firstname: string;
+  lastname: string;
   mobileNumber: string;
   password: string;
-  locale: string;
+  usernameType: string;
 
   patterns: any = {
     username: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -16,11 +17,12 @@ export class Register {
 
   constructor() {
     this.username = '';
-    this.name = '';
-    this.surname = '';
+    this.firstname = '';
+    this.lastname = '';
     this.mobileNumber = '';
+    this.email = '';
     this.password = '';
-    this.locale = '';
+    this.usernameType = 'EMAIL';
   }
 
 }

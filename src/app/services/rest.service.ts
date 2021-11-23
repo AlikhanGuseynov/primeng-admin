@@ -11,7 +11,7 @@ export class RestService {
   constructor(private httpClientService: HttpClientService) {
   }
 
-  login(body: any, recaptcha: string | number | boolean) {
+  login(body: any, recaptcha?: string | number | boolean) {
     let query = new HttpParams();
     if (recaptcha) {
       query = query.set('recaptcha', recaptcha);

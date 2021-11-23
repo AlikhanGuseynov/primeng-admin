@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   returnUrl = '';
 
   constructor(
-    private rest: RestService,
-    private util: UtilService,
+    private restService: RestService,
+    private utilService: UtilService,
     private http: HttpClient,
     private route: ActivatedRoute,
     private authService: AuthService
@@ -61,8 +61,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.goTo('dashboard');
-    this.authService.setLoginStatus(true);
+    this.restService.login(this.loginModel).pipe(
+      catchError((err) => {
+        if (err.error) {
+          this.regErrorMessage = err.error.developerMessage;
+          // this.captchaRef.reset();
+        }
+        return throwError(err);
+      })
+    ).subscribe(
+      (result: any) => {
+        this.utilService.goTo('dashboard');
+        this.authService.setLoginStatus(true);
+      });
     // this.captchaRef.execute();
   }
 
@@ -73,8 +84,9 @@ export class LoginComponent implements OnInit {
   }
 
   goTo(url: string) {
-    this.util.goTo(url);
+    this.utilService.goTo(url);
   }
+
 
   // public submit(captchaany: string): void {
   //   this.recaptcha = captchaany;
@@ -164,7 +176,7 @@ export class LoginComponent implements OnInit {
     return data;
   }
   postText(body: any) {
-    this.rest.postText(body).pipe(
+    this.restService.postText(body).pipe(
       catchError((err) => {
         if (err.error) {
         }
@@ -176,7 +188,7 @@ export class LoginComponent implements OnInit {
   }
 
   editText(body: any) {
-    this.rest.editText(body).pipe(
+    this.restService.editText(body).pipe(
       catchError((err) => {
         if (err.error) {
         }

@@ -2,24 +2,51 @@
   <div class="logo-container">
     <img class="logo" src="https://www.primefaces.org/freya-ng/assets/layout/images/logo-freya-single.svg" alt="">
   </div>
-  <form #f="ngForm" class="form p-d-flex p-flex-column" novalidate>
 
-    <input id="email" placeholder="Email" class="p-inputtext p-component p-element"
-           [pattern]="signupModel.patterns.username" [(ngModel)]="signupModel.username" #signupUsername="ngModel"
-           name="signupUsername" required
-           (keyup)="clearError()">
-    <input id="password" placeholder="Password" class="p-inputtext p-component p-element"
-           [(ngModel)]="signupModel.password" required
-           name="signupPassword" #password>
-    <input id="repeat-password" placeholder="Repeat password" class="p-inputtext p-component p-element"
-           [(ngModel)]="repeatPassword" required
-           name="signupPassword" #repeatPasswordModel>
-    <button label="Large" (click)="signup()"
-            [disabled]="!(f.valid && repeatPassword === signupModel.password) "
-            type="button"
-            class="p-element p-ripple p-button p-component">
-      <span class="p-button-label">SIGNUP</span>
-      <span class="p-ink"></span>
+  <form class="form p-d-flex p-flex-column" novalidate>
+    <input type="text" class="p-inputtext p-component p-element" id="user-username" [(ngModel)]="signupModel.username"
+           [pattern]="signupModel.patterns.username" #signupUsername="ngModel" required
+           name="signupUsername" (keyup)="clearError()" [placeholder]="'REGISTER.username' | translate">
+
+    <p class="danger own-danger error" [ngStyle]="{'display': signupUsername.errors?.pattern ? 'block' : 'none'}"
+       [translate]="'HOME.error_username'">Username incorrect</p>
+    <input type="text" class="p-inputtext p-component p-element" id="user-name" [(ngModel)]="signupModel.name"
+           [pattern]="signupModel.patterns.name" #signupName="ngModel" required
+           name="signupName" (keyup)="clearError()" [placeholder]="'REGISTER.name' | translate">
+    <p class="danger own-danger error" [ngStyle]="{'display': signupName.errors?.pattern ? 'block' : 'none'}"
+       [translate]="'HOME.error_name'">Username incorrect</p>
+    <input type="text" class="p-inputtext p-component p-element" id="user-surname" [(ngModel)]="signupModel.surname"
+           [pattern]="signupModel.patterns.surname" #signupSurname="ngModel" required
+           name="signupSurname" (keyup)="clearError()" [placeholder]="'REGISTER.surname' | translate">
+    <p class="danger own-danger error" [ngStyle]="{'display': signupSurname.errors?.pattern ? 'block' : 'none'}"
+       [translate]="'HOME.error_name'">Username incorrect</p>
+    <input type="text" class="p-inputtext p-component p-element" id="user-phone"
+           [(ngModel)]="signupModel.mobileNumber" [pattern]="signupModel.patterns.mobileNumber"
+           #signupMobileNumber="ngModel" required
+           name="signupMobileNumber" (keyup)="clearError()" [placeholder]="'REGISTER.phone_number' | translate">
+    <p class="danger own-danger error" [ngStyle]="{'display': signupMobileNumber.errors?.pattern ? 'block' : 'none'}"
+       [translate]="'HOME.error_name'">Username incorrect</p>
+    <input type="password" class="p-inputtext p-component p-element" id="user-password"
+           [placeholder]="'REGISTER.password' | translate" name="signupPassword"
+           [(ngModel)]="signupModel.password" [pattern]="signupModel.patterns.password" #signupPassword="ngModel"
+           required>
+    <p class="danger own-danger error" [ngStyle]="{'display': signupPassword.errors?.pattern ? 'block' : 'none'}"
+       [translate]="'REGISTER.error_password'">Password incorrect</p>
+    <input type="password" class="p-inputtext p-component p-element" id="user-password2"
+           [placeholder]="'REGISTER.confirm_password' | translate"
+           name="confirmPassword" [(ngModel)]="confirmPassword" required>
+    <p class="danger own-danger error"
+       [ngStyle]="{'display': signupModel.password && confirmPassword && confirmPassword !== signupModel.password ? 'block' : 'none'}"
+       [translate]="'REGISTER.error_password_match'">Pasword incorrect</p>
+    <p class="danger own-danger error"
+       [ngStyle]="{'display': regErrorMessage ? 'block' : 'none'}">{{regErrorMessage}}</p>
+    <!--    <div class="recaptcha" style="margin-top: 10px;margin-bottom: 10px;">-->
+    <!--      <re-captcha #captchaRef (resolved)="resolved($event)"></re-captcha>-->
+    <!--    </div>-->
+    <button type="submit" (click)="signup()"
+            [disabled]="signupPassword.errors?.pattern || signupModel.password !== confirmPassword"
+            class="btn btn-outline-primary btn-block" [translate]="'REGISTER.register'"><i
+      class="feather icon-user"></i> Register
     </button>
   </form>
 </div>

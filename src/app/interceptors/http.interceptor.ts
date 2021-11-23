@@ -14,27 +14,27 @@ export class TabazHttpInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    if (this.loaderExceptions(request.url)) {
-      $('.loader').show();
-    }
+    // if (this.loaderExceptions(request.url)) {
+    //   $('.loader').show();
+    // }
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          $('.loader').hide();
+          // $('.loader').hide();
         }
         return event;
       }),
       catchError((error: any) => {
-        $('.loader').hide();
-        const isHaveParameter = location.href.indexOf('welcome') > -1 || location.href.indexOf('userParam') > -1
-          || location.href.indexOf('invitationCode') > -1 || location.href.includes('auth');
-        if ((error.status === 403 || error.status === 401) && !isHaveParameter) {
-          localStorage.removeItem('refreshToken');
-          localStorage.removeItem('accessToken');
-          const lang = (location.href.split('lang=') && location.href.split('lang=') [1]) || localStorage.getItem('lang') || 'az';
-          this.router.navigate(['/auth/login'], {queryParams: {lang}});
-        }
-        $('.loader').hide();
+        // $('.loader').hide();
+        // const isHaveParameter = location.href.indexOf('welcome') > -1 || location.href.indexOf('userParam') > -1
+        //   || location.href.indexOf('invitationCode') > -1 || location.href.includes('auth');
+        // if ((error.status === 403 || error.status === 401) && !isHaveParameter) {
+        //   localStorage.removeItem('refreshToken');
+        //   localStorage.removeItem('accessToken');
+        //   const lang = (location.href.split('lang=') && location.href.split('lang=') [1]) || localStorage.getItem('lang') || 'az';
+        //   this.router.navigate(['/auth/login'], {queryParams: {lang}});
+        // }
+        // $('.loader').hide();
         return throwError(error);
       }),
     );

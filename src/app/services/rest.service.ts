@@ -24,7 +24,7 @@ export class RestService {
   }
 
 
-  register(body: any, recaptcha: string | number | boolean) {
+  register(body: any, recaptcha?: string | number | boolean) {
     let query = new HttpParams();
     if (recaptcha) {
       query = query.set('recaptcha', recaptcha);
@@ -38,6 +38,14 @@ export class RestService {
 
   refreshToken(body: { refreshToken: string | null; }) {
     return this.httpClientService.post(environment.URLS.REFRESHTOKEN, body);
+  }
+
+  postText(body: any) {
+    return this.httpClientService.post(environment.URLS.LOCALIZATION_SET, body);
+  }
+
+  editText(body: any) {
+    return this.httpClientService.put(environment.URLS.LOCALIZATION_UPDATE.replace(':key', body.displayName), body);
   }
 
   // updateGoal(idGoal, body) {

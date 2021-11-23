@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const REST_API_URL = 'https://tab.az/api';
+export const REST_API_URL = 'http://35.195.79.77:8001/api';
 
 
 export const environment = {
@@ -12,12 +12,14 @@ export const environment = {
   authKey: 'Authorization',
   imagePath: 'https://tab.az/api/files/',
   URLS: {
-    REGISTER: REST_API_URL + '/auth/users/register-tenant',
-    LOGIN: REST_API_URL + '/auth/token',
+    REGISTER: REST_API_URL + '/auth/registration',
+    LOGIN: REST_API_URL + '/auth/login',
     LOGOUT: REST_API_URL + '/auth/log-out',
     PROFILEINFO: REST_API_URL + '/tenant/users',
     REFRESHTOKEN: REST_API_URL + '/auth/refresh-token',// POST
-    LOCALIZATION_PREFIX: REST_API_URL + '/localization/translation/tab-',
+    LOCALIZATION_PREFIX: REST_API_URL + '/uploads/localization/tab-',
+    LOCALIZATION_SET: REST_API_URL + '/lang-texts',
+    LOCALIZATION_UPDATE: REST_API_URL + '/lang-texts/:key',
   }
 }
 

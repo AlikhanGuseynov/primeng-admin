@@ -6,6 +6,8 @@ import {HttpClient} from "@angular/common/http";
 import {RestService} from "../../../services/rest.service";
 import {Login} from "../../../models/login";
 import {AuthService} from "../../../services/auth.service";
+import {catchError} from "rxjs/internal/operators";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getLang();
     // this.route
     //   .queryParams
     //   .subscribe(params => {
@@ -73,8 +76,8 @@ export class LoginComponent implements OnInit {
     this.util.goTo(url);
   }
 
-  // public submit(captchaResponse: string): void {
-  //   this.recaptcha = captchaResponse;
+  // public submit(captchaany: string): void {
+  //   this.recaptcha = captchaany;
   //   const body = {
   //     username: this.loginModel.username,
   //     password: this.loginModel.password,
@@ -103,5 +106,84 @@ export class LoginComponent implements OnInit {
   togglePassword(input: any) {
     console.log('Clicked');
     input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  getLang() {
+    this.http.get('../assets/i18n/az.json').subscribe((res: any) => {
+      let jsonBody: any = [];
+      Object.keys(res).forEach(key => {
+        Object.keys(res[key]).forEach(subKey => {
+          const body = {
+            description: '',
+            textKey: key + '.' + subKey,
+            textAz: res[key][subKey],
+            textEn: key + '.' + subKey,
+            textRu: key + '.' + subKey,
+            langProduct: {
+              id: 2,
+              name: "client_side",
+              description: "Client Side"
+            }
+          };
+          jsonBody.push(body);
+        });
+      });
+      this.http.get('../assets/i18n/en.json').subscribe((res2: any) => {
+        jsonBody = this.changeBody(jsonBody, res2, 'en');
+        this.http.get('../assets/i18n/ru.json').subscribe((res3: any) => {
+          jsonBody = this.changeBody(jsonBody, res3, 'ru');
+          jsonBody.map((body: any) => {
+            // console.log(body, 'finally');
+            this.postText(body);
+            // this.editText(body);
+          });
+        });
+      });
+
+    });
+  }
+
+  changeBody(data: any, res: any, lang: string) {
+    Object.keys(res).forEach(key => {
+      Object.keys(res[key]).forEach(subKey => {
+        data = data.map((body: any) => {
+          const currentKey = key + '.' + subKey;
+          if (body.textKey === currentKey) {
+            if (lang === 'en') {
+              // body.enText = res[key][subKey] + '_' + lang;
+              body.textEn = res[key][subKey];
+            } else {
+              // body.ruText = res[key][subKey] + '_' + lang;
+              body.textRu = res[key][subKey];
+            }
+          }
+          return body;
+        });
+      });
+    });
+    return data;
+  }
+  postText(body: any) {
+    this.rest.postText(body).pipe(
+      catchError((err) => {
+        if (err.error) {
+        }
+        return throwError(err);
+      }),
+    ).subscribe(
+      (data: any) => {
+      });
+  }
+
+  editText(body: any) {
+    this.rest.editText(body).pipe(
+      catchError((err) => {
+        if (err.error) {
+        }
+        return throwError(err);
+      }),
+    ).subscribe(
+      (data: any) => {
+      });
   }
 }

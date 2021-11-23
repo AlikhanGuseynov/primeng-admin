@@ -1,0 +1,28 @@
+{
+  "REGISTER": {
+    "success_message": "Sorğunuz qəbul edildi və Sizə qısa zamanda email göndəriləcək",
+    "username": "username",
+    "name": "name",
+    "surname": "surname",
+    "phone_number": "phone_number",
+    "password": "password",
+    "error_password": "Password incorrect",
+    "confirm_password": "confirm_password",
+    "error_password_match": "Pasword incorrect",
+    "remember_me": " Remember Me",
+    "forgot_password": "Forgot Password?",
+    "register": "Register",
+    "login": "Login"
+  },
+  "LOGIN": {
+    "credentials": "Enter Username and Password",
+    "username": "username",
+    "error_username": "Username incorrect",
+    "password": "password",
+    "remember_me": " Remember Me",
+    "forgot_password": "Forgot Password?",
+    "login": "Login",
+    "new_user": "New to Kribso ?",
+    "register": "Register"
+  }
+}

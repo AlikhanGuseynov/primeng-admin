@@ -19,7 +19,7 @@
     <!--      <span class="p-button-label">LOGIN</span>-->
     <!--      <span class="p-ink"></span>-->
     <!--    </button>-->
-    <button label="Large" (click)="login()"
+    <button label="Large" [disabled]="!f?.valid" (click)="login()"
             type="button"
             class="p-element p-ripple p-button p-component">
       <span class="p-button-label">LOGIN</span>

@@ -3,7 +3,7 @@
     <img class="logo" src="https://www.primefaces.org/freya-ng/assets/layout/images/logo-freya-single.svg" alt="">
   </div>
 
-  <form class="form p-d-flex p-flex-column" novalidate>
+  <form #f="ngForm" class="form p-d-flex p-flex-column" novalidate>
     <input type="text" class="p-inputtext p-component p-element" id="user-username" [(ngModel)]="signupModel.username"
            [pattern]="signupModel.patterns.username" #signupUsername="ngModel" required
            name="signupUsername" (keyup)="clearError()" [placeholder]="'Username'">
@@ -46,7 +46,7 @@
     <!--      <re-captcha #captchaRef (resolved)="resolved($event)"></re-captcha>-->
     <!--    </div>-->
     <button label="Large" (click)="signup()"
-            [disabled]="signupPassword.errors?.pattern || signupModel.password !== confirmPassword"
+            [disabled]="!f?.valid || signupPassword.errors?.pattern || signupModel.password !== confirmPassword"
             type="button"
             class="p-element p-ripple p-button p-component">
       <span class="p-button-label">Register</span>

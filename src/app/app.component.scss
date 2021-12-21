@@ -14,5 +14,12 @@
 }
 
 .router-outlet-wrapper {
-  margin-top: 66px;
+  margin-top: 80px;
+  position: relative;
+  z-index: 80;
+}
+
+.app-index-layout {
+  position: relative;
+  z-index: 99;
 }

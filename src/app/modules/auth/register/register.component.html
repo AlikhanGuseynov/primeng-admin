@@ -33,13 +33,13 @@
            [(ngModel)]="signupModel.password" [pattern]="signupModel.patterns.password" #signupPassword="ngModel"
            required>
     <p class="danger own-danger error" [ngStyle]="{'display': signupPassword.errors?.pattern ? 'block' : 'none'}"
-       [translate]="'error_password'">Password incorrect</p>
+       >Easy password</p>
     <input type="password" class="p-inputtext p-component p-element" id="user-password2"
            [placeholder]="'Confirm Password'"
            name="confirmPassword" [(ngModel)]="confirmPassword" required>
     <p class="danger own-danger error"
        [ngStyle]="{'display': signupModel.password && confirmPassword && confirmPassword !== signupModel.password ? 'block' : 'none'}"
-       [translate]="'error_password_match'">Pasword incorrect</p>
+       >Password not match</p>
     <p class="danger own-danger error"
        [ngStyle]="{'display': regErrorMessage ? 'block' : 'none'}">{{regErrorMessage}}</p>
     <!--    <div class="recaptcha" style="margin-top: 10px;margin-bottom: 10px;">-->
@@ -53,5 +53,6 @@
 <!--      <span class="p-button-label" [translate]="'register'">Register</span>-->
       <span class="p-ink"></span>
     </button>
+    <p class="have-account">Do you have an account, <a routerLink="/auth/login">sign in</a></p>
   </form>
 </div>

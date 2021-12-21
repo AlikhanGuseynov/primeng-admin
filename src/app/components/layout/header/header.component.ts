@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MegaMenuItem} from "primeng/api";
+import {UtilService} from "../../../services/util.service";
+import {AuthService} from "../../../services/auth.service";
 
 export interface Language {
   name: string,
@@ -19,7 +21,7 @@ export class HeaderComponent implements OnInit {
   menuItems: MegaMenuItem[] = [];
 
 
-  constructor() {
+  constructor(private utilService: UtilService, private authService: AuthService) {
 
     this.cities = [
       {name: 'AZ', value: 'az'},
@@ -36,7 +38,12 @@ export class HeaderComponent implements OnInit {
               items: [
                 {label: 'Company profile', routerLink: '/dashboard'},
                 {label: 'Settings', routerLink: '/settings'},
-                {label: 'Logout'},
+                {
+                  label: 'Logout', command: event => {
+                    this.authService.setLoginStatus(false);
+                    this.utilService.goTo('auth/login');
+                  }
+                },
               ]
             }
           ],

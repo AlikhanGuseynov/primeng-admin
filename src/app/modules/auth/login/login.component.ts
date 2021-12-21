@@ -61,19 +61,21 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.restService.login(this.loginModel).pipe(
-      catchError((err) => {
-        if (err.error) {
-          this.regErrorMessage = err.error.developerMessage;
-          // this.captchaRef.reset();
-        }
-        return throwError(err);
-      })
-    ).subscribe(
-      (result: any) => {
-        this.utilService.goTo('dashboard');
-        this.authService.setLoginStatus(true);
-      });
+    this.utilService.goTo('dashboard');
+    this.authService.setLoginStatus(true);
+    // this.restService.login(this.loginModel).pipe(
+    //   catchError((err) => {
+    //     if (err.error) {
+    //       this.regErrorMessage = err.error.developerMessage;
+    //       // this.captchaRef.reset();
+    //     }
+    //     return throwError(err);
+    //   })
+    // ).subscribe(
+    //   (result: any) => {
+    //     this.utilService.goTo('dashboard');
+    //     this.authService.setLoginStatus(true);
+    //   });
     // this.captchaRef.execute();
   }
 

@@ -18,7 +18,7 @@
       </div>
     </p-accordionTab>
 
-    <p-accordionTab header="Some header 2">
+    <p-accordionTab header="Some header 2" [selected]="true">
       <div class="list">
         <div class="list-item">
           <p>Mobile number</p>
@@ -59,7 +59,7 @@
       </div>
     </ng-template>
   </p-fieldset>
-  <p-fieldset [toggleable]="true">
+  <p-fieldset [toggleable]="true" [collapsed]="check4">
     <ng-template pTemplate="header">Some header 4</ng-template>
     <ng-template pTemplate="content">
       <div class="list">

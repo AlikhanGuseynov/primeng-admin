@@ -9,7 +9,7 @@ export class SettingsComponent implements OnInit {
 
   check1 = false;
   check2 = false;
-  check3 = true;
+  check3 = false;
   check4 = false;
   check5 = false;
   check6 = false;

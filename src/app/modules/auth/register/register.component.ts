@@ -5,6 +5,7 @@ import {RestService} from "../../../services/rest.service";
 import {throwError} from "rxjs";
 import {catchError} from "rxjs/internal/operators";
 import {UtilService} from "../../../services/util.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,9 @@ export class RegisterComponent implements OnInit {
   }
 
   constructor(private restService: RestService,
-              private utilService: UtilService) {
+              private utilService: UtilService,
+              private authService: AuthService,
+              ) {
   }
 
   ngOnInit(): void {
@@ -33,20 +36,22 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
-    this.signupModel.usernameType = this.signupModel.patterns.username.test(this.signupModel.username)
-      ? this.loginType.email : this.loginType.mobile;
-    this.signupModel.patterns = undefined;
-    this.restService.register(this.signupModel).pipe(
-      catchError((err) => {
-        if (err.error) {
-          this.regErrorMessage = err.error.developerMessage;
-          // this.captchaRef.reset();
-        }
-        return throwError(err);
-      })
-    ).subscribe(
-      (result: any) => {
-        this.utilService.goTo('dashboard');
-      });
+    // this.signupModel.usernameType = this.signupModel.patterns.username.test(this.signupModel.username)
+    //   ? this.loginType.email : this.loginType.mobile;
+    // this.signupModel.patterns = undefined;
+    // this.restService.register(this.signupModel).pipe(
+    //   catchError((err) => {
+    //     if (err.error) {
+    //       this.regErrorMessage = err.error.developerMessage;
+    //       // this.captchaRef.reset();
+    //     }
+    //     return throwError(err);
+    //   })
+    // ).subscribe(
+    //   (result: any) => {
+    //     this.utilService.goTo('dashboard');
+    //   });
+    this.utilService.goTo('dashboard');
+    this.authService.setLoginStatus(true);
   }
 }
